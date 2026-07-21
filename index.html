@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Momentum</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- 로그아웃 버튼 -->
+    <button id="logout" class="logout hidden">로그아웃</button>
+
+    <!-- 날씨 -->
+    <div id="weather" class="weather hidden">
+      <span class="weather__city">--</span>
+      <span class="weather__temp">--°C</span>
+      <span class="weather__desc">--</span>
+    </div>
+
+    <!-- 시계 -->
+    <div class="clock">
+      <h1 id="clock" class="clock__time">00:00:00</h1>
+      <h2 id="date" class="clock__date">----</h2>
+    </div>
+
+    <!-- 로그인 폼 -->
+    <form id="login-form" class="login-form hidden">
+      <input
+        id="login-input"
+        type="text"
+        placeholder="이름을 입력하세요"
+        required
+        maxlength="15"
+      />
+      <button>입장</button>
+    </form>
+
+    <!-- 인사말 -->
+    <h2 id="greeting" class="greeting hidden"></h2>
+
+    <!-- 투두 -->
+    <div id="todo-container" class="todo hidden">
+      <h3 class="todo__title">할 일 목록</h3>
+      <form id="todo-form" class="todo__form">
+        <input
+          id="todo-input"
+          type="text"
+          placeholder="새로운 할 일을 입력하세요"
+          required
+        />
+        <button>추가</button>
+      </form>
+      <ul id="todo-list" class="todo__list"></ul>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --card-bg: rgba(255, 255, 255, 0.12);
+  --card-border: rgba(255, 255, 255, 0.25);
+  --text: #f5f5f5;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px 60px;
+  background-color: #1a1a1a;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.6s ease-in-out;
+}
+
+/* 배경 위 어두운 오버레이로 글자 가독성 확보 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.25) 40%,
+    rgba(0, 0, 0, 0.55)
+  );
+  z-index: -1;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 공통 프로스티드 글래스 스타일 */
+.logout,
+.weather,
+.login-form input,
+.login-form button,
+.todo__form input,
+.todo__form button,
+.todo__item {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text);
+}
+
+/* 로그아웃 */
+.logout {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 날씨 */
+.weather {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 90px;
+}
+
+.weather__city {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.weather__temp {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.weather__desc {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* 시계 */
+.clock {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.clock__time {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.clock__date {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 6px;
+  opacity: 0.9;
+}
+
+/* 로그인 폼 */
+.login-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.login-form input,
+.login-form button {
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.login-form input::placeholder {
+  color: rgba(245, 245, 245, 0.7);
+}
+
+.login-form button {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* 인사말 */
+.greeting {
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 투두 */
+.todo {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.todo__title {
+  font-size: 18px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.todo__form {
+  display: flex;
+  gap: 10px;
+}
+
+.todo__form input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+}
+
+.todo__form input::placeholder {
+  color: rgba(245, 245, 245, 0.7);
+}
+
+.todo__form button {
+  padding: 0 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.todo__list {
+  list-style: none;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo__item {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 12px;
+}
+
+.todo__text {
+  flex: 1;
+  text-align: left;
+  font-size: 15px;
+}
+
+.todo__item.done .todo__text {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+.todo__btn {
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.todo__btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
