@@ -151,7 +151,7 @@ if (savedTodos !== null) {
 /* ---------- 4. 유튜브 배경 음악 영상 ---------- */
 // 배경으로 쓸 유튜브 영상 ID. 원하는 영상으로 바꾸세요.
 // (유튜브 주소 watch?v=XXXX 의 XXXX 부분)
-const VIDEO_ID = "jfKfPfyJRdk"; // lofi hip hop radio
+const VIDEO_ID = "x772Kv30xdg";
 
 const bgIframe = document.querySelector("#bg-iframe");
 const soundToggle = document.querySelector("#sound-toggle");
