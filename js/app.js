@@ -148,18 +148,37 @@ if (savedTodos !== null) {
   renderTodos();
 }
 
-/* ---------- 4. 랜덤 배경 이미지 ---------- */
-// 무료로 쓸 수 있는 이미지들. 원하면 로컬 img/ 폴더 이미지로 교체하세요.
-const IMAGES = [
-  "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=1600&q=80",
-  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80",
-  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600&q=80",
-  "https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=1600&q=80",
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=80",
-];
+/* ---------- 4. 유튜브 배경 음악 영상 ---------- */
+// 배경으로 쓸 유튜브 영상 ID. 원하는 영상으로 바꾸세요.
+// (유튜브 주소 watch?v=XXXX 의 XXXX 부분)
+const VIDEO_ID = "jfKfPfyJRdk"; // lofi hip hop radio
 
-const chosenImage = IMAGES[Math.floor(Math.random() * IMAGES.length)];
-document.body.style.backgroundImage = `url(${chosenImage})`;
+const bgIframe = document.querySelector("#bg-iframe");
+const soundToggle = document.querySelector("#sound-toggle");
+
+// mute 상태에 따라 iframe src를 만든다
+function buildVideoSrc(muted) {
+  const params = new URLSearchParams({
+    autoplay: "1",
+    mute: muted ? "1" : "0",
+    controls: "0",
+    loop: "1",
+    playlist: VIDEO_ID, // loop이 동작하려면 playlist에 같은 ID 필요
+    playsinline: "1",
+    rel: "0",
+    modestbranding: "1",
+  });
+  return `https://www.youtube.com/embed/${VIDEO_ID}?${params.toString()}`;
+}
+
+let isMuted = true; // 브라우저 정책상 처음엔 음소거로 자동재생
+bgIframe.src = buildVideoSrc(isMuted);
+
+soundToggle.addEventListener("click", () => {
+  isMuted = !isMuted;
+  bgIframe.src = buildVideoSrc(isMuted); // src 교체로 소리 on/off
+  soundToggle.innerText = isMuted ? "🔊 소리 켜기" : "🔇 소리 끄기";
+});
 
 /* ---------- 5. 날씨 & 위치 ---------- */
 const weatherBox = document.querySelector("#weather");
